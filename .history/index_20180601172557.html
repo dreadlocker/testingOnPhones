@@ -26,44 +26,8 @@
     <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST </p>
 
     <script>
-        function attachEvent(element, evtId, handler) {
-            if (element.addEventListener) {
-                element.addEventListener(evtId, handler, false);
-            } else if (element.attachEvent) {
-                var ieEvtId = "on" + evtId;
-                element.attachEvent(ieEvtId, handler);
-            } else {
-                var legEvtId = "on" + evtId;
-                element[legEvtId] = handler;
-            }
-        }
-
-        function onBeforeZoom(evt) {
-            var viewportmeta = document.querySelector('meta[name="viewport"]');
-            if (viewportmeta) {
-                viewportmeta.content = "user-scalable=0";
-            }
-        }
-
-        function onAfterZoom(evt) {
-            var viewportmeta = document.querySelector('meta[name="viewport"]');
-            if (viewportmeta) {
-                viewportmeta.content = "width=device-width, user-scalable=1";
-            }
-        }
-
-        function disableZoom() {
-            // Search all relevant input elements and attach zoom-events
-            var inputs = document.getElementsByTagName("input");
-            for (var i = 0; i < inputs.length; i++) {
-                attachEvent(inputs[i], "focus", onBeforeZoom);
-                attachEvent(inputs[i], "blur", onAfterZoom);
-            }
-        }
-        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-            attachEvent(window, "load", disableZoom);
-        }
-
+        
+        
 
         // document.addEventListener('gesturestart', function (e) {
         //     e.preventDefault();
