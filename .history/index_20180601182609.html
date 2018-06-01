@@ -27,13 +27,13 @@
 
 <body>
     <p style="text-align: center; font-size: 40px;">TEST</p>
+    <p style="text-align: center; font-size: 40px;">TEST</p>
 
     <script>
         document.addEventListener('touchmove', function (event) {
-                alert(event);
-                alert(event.scale);
+                console.log(event);
+                console.log(event.scale);
             if (event.scale !== 1) {
-                alert('obj')
                 event.preventDefault();
             }
         }, false);
