@@ -28,13 +28,11 @@
 <body>
     <p style="text-align: center; font-size: 40px;">TEST</p>
     <p style="text-align: center; font-size: 40px;">TEST</p>
+    <p style="text-align: center; font-size: 40px;">TEST</p>
 
     <script>
-        document.addEventListener('touchmove', function (event) {
-            if (event.scale !== 1) {
-                event.preventDefault();
-            }
-        }, false);
+        document.querySelector('meta[name=viewport]').setAttribute('content',
+            'width=device-width,initial-scale=1,maximum-scale=10,user-scalable=yes');
 
 
         // document.addEventListener('gesturestart', function (e) { // e.preventDefault(); // });
