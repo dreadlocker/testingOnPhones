@@ -20,31 +20,24 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" /> -->
     <!-- <meta name="viewport" content="width = 320, initial-scale = 1, user-scalable = no, minimum-scale=1, maximum-scale=1">-->
     <!-- <meta name="viewport" content="user-scalable=no" /> -->
-    <!-- <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0" /> -->
-    <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0" />
+    <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0" />
 
 </head>
 
 <body>
     <p style="text-align: center; font-size: 40px;">TEST</p>
     <p style="text-align: center; font-size: 40px;">TEST</p>
+    <p style="text-align: center; font-size: 40px;">TEST</p>
 
     <script>
-        var mobile_timer = false,
-            viewport = document.getElementById('viewport');
-        if (navigator.userAgent.match(/iPhone/i)) {
-            viewport.setAttribute('content', 'width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0');
-            window.addEventListener('gesturestart', function () {
-                clearTimeout(mobile_timer);
-                viewport.setAttribute('content', 'width=device-width,minimum-scale=1.0,maximum-scale=10.0');
-            }, false);
-            window.addEventListener('touchend', function () {
-                clearTimeout(mobile_timer);
-                mobile_timer = setTimeout(function () {
-                    viewport.setAttribute('content',
-                        'width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0');
-                }, 1000);
-            }, false);
+        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+            var viewportmeta = document.querySelector('meta[name="viewport"]');
+            if (viewportmeta) {
+                viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0';
+                document.body.addEventListener('gesturestart', function () {
+                    viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1.6';
+                }, false);
+            }
         }
 
         // document.addEventListener('gesturestart', function (e) {
