@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Safari on iPhone X</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> -->
+    <!-- <meta name="viewport" content="width=640px, initial-scale=.5, maximum-scale=.5" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+    <!-- <meta name="viewport" content="width=640px, initial-scale=.5, maximum-scale=.5" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> -->
+    <!-- <meta name="viewport" content="user-scalable=no" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" /> -->
+    <!-- <meta name="viewport" content="width = 320, initial-scale = 1, user-scalable = no, minimum-scale=1, maximum-scale=1">-->
+    <!-- <meta name="viewport" content="user-scalable=no" /> -->
+</head>
+
+<body>
+    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST</p>
+    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST</p>
+    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST</p>
+
+    <script>
+        function attachEvent(element, evtId, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(evtId, handler, false);
+            } else if (element.attachEvent) {
+                var ieEvtId = "on" + evtId;
+                element.attachEvent(ieEvtId, handler);
+            } else {
+                var legEvtId = "on" + evtId;
+                element[legEvtId] = handler;
+            }
+        }
+
+        function getSender(evt, local) {
+            if (!evt) {
+                evt = window.event;
+            }
+            var sender;
+            if (evt.srcElement) {
+                sender = evt.srcElement;
+            } else {
+                sender = local;
+            }
+            return sender;
+        }
+
+        function onBeforeZoom(evt) {
+            var zoom = 320 / window.innerWidth;
+            var element = getSender(evt);
+            element.style.fontSize = Math.ceil(16 / zoom) + "px";
+        }
+
+        function onAfterZoom(evt) {
+            var element = getSender(evt);
+            element.style.fontSize = "";
+        }
+
+        function disableZoom() {
+            // Search all relevant input elements and attach zoom-events
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                attachEvent(inputs[i], "focus", onBeforeZoom);
+                attachEvent(inputs[i], "blur", onAfterZoom);
+            }
+        }
+        if (navigator.userAgent.match(/iPhone/i)) {
+            attachEvent(window, "load", disableZoom);
+        }
+
+
+        // document.addEventListener('gesturestart', function (e) {
+        //     e.preventDefault();
+        // });
+    </script>
+    <style>
+    </style>
+</body>
+
+</html>
