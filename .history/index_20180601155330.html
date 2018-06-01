@@ -8,14 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="jquery-3.3.1.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST </p>
+    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST TEST</p>
     <script>
-        console.log($('body'));
         var $viewportMeta = $('meta[name="viewport"]');
         $('input, select, textarea').bind('focus blur', function (event) {
             $viewportMeta.attr('content', 'width=device-width,initial-scale=1,maximum-scale=' + (event.type ==

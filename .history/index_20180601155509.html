@@ -13,9 +13,8 @@
 </head>
 
 <body>
-    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST </p>
+    <p style="text-align: center; font-size: 40px; padding-top: 100px;">TEST TEST</p>
     <script>
-        console.log($('body'));
         var $viewportMeta = $('meta[name="viewport"]');
         $('input, select, textarea').bind('focus blur', function (event) {
             $viewportMeta.attr('content', 'width=device-width,initial-scale=1,maximum-scale=' + (event.type ==
