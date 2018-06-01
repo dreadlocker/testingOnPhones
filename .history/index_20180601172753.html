@@ -39,28 +39,18 @@
             }
         }
 
-        function getSender(evt, local) {
-            if (!evt) {
-                evt = window.event;
-            }
-            var sender;
-            if (evt.srcElement) {
-                sender = evt.srcElement;
-            } else {
-                sender = local;
-            }
-            return sender;
-        }
-
         function onBeforeZoom(evt) {
-            var zoom = 320 / window.innerWidth;
-            var element = getSender(evt);
-            element.style.fontSize = Math.ceil(16 / zoom) + "px";
+            var viewportmeta = document.querySelector('meta[name="viewport"]');
+            if (viewportmeta) {
+                viewportmeta.content = "user-scalable=0";
+            }
         }
 
         function onAfterZoom(evt) {
-            var element = getSender(evt);
-            element.style.fontSize = "";
+            var viewportmeta = document.querySelector('meta[name="viewport"]');
+            if (viewportmeta) {
+                viewportmeta.content = "width=device-width, user-scalable=1";
+            }
         }
 
         function disableZoom() {
@@ -71,7 +61,7 @@
                 attachEvent(inputs[i], "blur", onAfterZoom);
             }
         }
-        if (navigator.userAgent.match(/iPhone/i)) {
+        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
             attachEvent(window, "load", disableZoom);
         }
 
