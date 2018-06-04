@@ -28,7 +28,6 @@
 <body>
     <p style="text-align: center; font-size: 40px;">TEST</p>
     <p style="text-align: center; font-size: 40px;">TEST</p>
-    <p style="text-align: center; font-size: 40px;">TEST</p>
 
     <script>
         document.addEventListener('touchmove', function (event) {
@@ -36,8 +35,8 @@
             if (event.scale !== 1) {
                 event.preventDefault();
             }
-            alert('No Zomm in');
         }, false);
+        alert('No Zomm in');
 
         // document.addEventListener('gesturestart', function (event) {
         //     alert("Don't use zoom please!");
