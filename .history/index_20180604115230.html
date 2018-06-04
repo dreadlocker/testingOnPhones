@@ -31,7 +31,7 @@
     <script>
         setTimeout(() => {
 
-            document.addEventListener('gesturechange', function (event) {
+            document.addEventListener('gesturestart', function (event) {
                 alert('Dont use zoom please!');
                 var viewportmeta = document.querySelector('meta[name="viewport"]');
                 viewportmeta.setAttribute(
