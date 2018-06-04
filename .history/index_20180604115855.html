@@ -29,7 +29,6 @@
     <p style="text-align: center; font-size: 40px;">TEST</p>
     <p style="text-align: center; font-size: 40px;">TEST</p>
     <p style="text-align: center; font-size: 40px;">TEST</p>
-    <p style="text-align: center; font-size: 40px;">TEST</p>
 
     <script>
         setTimeout(() => {
@@ -37,12 +36,11 @@
             document.addEventListener('gesturestart', function (event) {
                 alert('Dont use zoom please!');
                 event.preventDefault();
-                alert('No Zomm in');
-
                 var viewportmeta = document.querySelector('meta[name="viewport"]');
                 viewportmeta.setAttribute(
                     '‚content‘,’width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
                 );
+                alert('No Zomm in')
 
                 if (event.scale !== 1) {
                     alert(event.scale);
