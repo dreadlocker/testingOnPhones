@@ -34,14 +34,12 @@
     <script>
         document.addEventListener('gesturestart', function (event) {
             alert('Dont use zoom please!');
-            alert(event.scale);
-
             if (event.scale !== 1) {
                 event.preventDefault();
-                event.scale = 1;
-                
-                var viewportmeta = document.querySelector('meta[name="viewport"]');
-                viewportmeta.setAttribute('‚content‘,’width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no');
+                // event.scale = 1;
+
+                // DA NAMERQ NE6TO PODOBNO NA REDO OTDOLY I DA GO PROBVAM
+                // document.querySelector('‚meta%5Bname=viewport%5D‘).setAttribute(‚content‘,’width=device-width,initial-scale=1.0,maximum-scale=10.0,user-scalable=1′);
                 alert('No Zomm in')
             }
         }, false);
