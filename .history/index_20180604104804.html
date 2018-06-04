@@ -32,14 +32,14 @@
     <script>
         document.addEventListener('gesturestart', function (event) {
             alert('Dont use zoom please!');
-            var viewportmeta = document.querySelector('meta[name="viewport"]');
-            viewportmeta.setAttribute(
-                '‚content‘,’width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
-            );
-            alert(viewportmeta);
 
             if (event.scale !== 1) {
                 alert(event.scale);
+                var viewportmeta = document.querySelector('meta[name="viewport"]');
+                viewportmeta.setAttribute(
+                    '‚content‘,’width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
+                );
+                alert(viewportmeta);
                 alert('No Zomm in')
                 event.preventDefault();
                 event.scale = 1;
