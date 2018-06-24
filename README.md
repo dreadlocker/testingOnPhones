@@ -1,1 +1,1 @@
-# https://github.com/dreadlocker/testingOnPhones
+# https://dreadlocker.github.io/testingOnPhones/
